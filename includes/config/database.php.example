@@ -1,0 +1,22 @@
+<?php
+/**
+ * Swap Design - Database Configuration (Example)
+ *
+ * Copy this file to includes/config/database.php and set your
+ * real database credentials. The application requires the file
+ * at includes/config/database.php on every request (frontend,
+ * admin, and AJAX), so the copy is mandatory before first use.
+ *
+ * Values are read from environment variables first, falling back
+ * to the placeholders below. This matches the README (Step 5).
+ *
+ * @package SwapDesign
+ */
+
+defined('SWAP_ROOT') or die('Access denied');
+
+define('DB_HOST',    getenv('DB_HOST')    ?: 'localhost');
+define('DB_NAME',    getenv('DB_NAME')    ?: 'your_database_name');
+define('DB_USER',    getenv('DB_USER')    ?: 'your_database_user');
+define('DB_PASS',    getenv('DB_PASS')    ?: 'your_database_password');
+define('DB_CHARSET', getenv('DB_CHARSET') ?: 'utf8mb4');

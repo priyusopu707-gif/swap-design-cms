@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Swap Design Locations</name>
+    <description>Swap Design - Professional design studio locations</description>
+    <Style id="businessStyle">
+      <IconStyle>
+        <scale>1.0</scale>
+        <Icon>
+          <href>https://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+
+    <!-- Main Business Location -->
+    <Placemark>
+      <name>Swap Design</name>
+      <description>
+        <![CDATA[
+          <div style="font-family: Arial, sans-serif;">
+            <h3>Swap Design</h3>
+            <p>Professional design studio offering website design, graphic design, logo branding, and digital marketing services.</p>
+            <p><strong>Services:</strong> Website Design, Graphic Design, Logo &amp; Branding, UI/UX Design, Digital Marketing</p>
+            <p><a href="https://swapdesign.com/">Visit Website</a></p>
+          </div>
+        ]]>
+      </description>
+      <styleUrl>#businessStyle</styleUrl>
+      <Point>
+        <coordinates>75.3433,19.8762,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <!-- Service Areas -->
+    <Placemark>
+      <name>Website Design Services - Aurangabad</name>
+      <description>
+        <![CDATA[
+          <div style="font-family: Arial, sans-serif;">
+            <p>Professional website design and development services in Aurangabad, Maharashtra.</p>
+            <p><a href="https://swapdesign.com/website-design-in-aurangabad/">Learn More</a></p>
+          </div>
+        ]]>
+      </description>
+      <styleUrl>#businessStyle</styleUrl>
+      <Point>
+        <coordinates>75.3433,19.8762,0</coordinates>
+      </Point>
+    </Placemark>
+
+  </Document>
+</kml>

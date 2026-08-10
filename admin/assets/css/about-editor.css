@@ -1,0 +1,432 @@
+/* ============================================================
+   Swap Design - About Page Editor
+   ============================================================ */
+
+/* ---- Section Cards ---- */
+.about-section-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border-light);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: box-shadow 0.2s, opacity 0.2s;
+}
+
+.about-section-card:hover {
+    box-shadow: var(--admin-shadow-sm);
+}
+
+.about-section-card--disabled {
+    opacity: 0.5;
+}
+
+.about-section-card--draft {
+    border-left: 3px solid var(--admin-warning);
+}
+
+.about-section-card--dragging {
+    opacity: 0.4;
+    box-shadow: var(--admin-shadow-sm);
+}
+
+/* ---- Card Header ---- */
+.about-section-card__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.about-section-card__handle {
+    cursor: grab;
+    color: var(--admin-text-subtle);
+    font-size: 16px;
+    letter-spacing: 2px;
+    user-select: none;
+}
+
+.about-section-card__title {
+    flex: 1;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--admin-text);
+}
+
+.about-section-card__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ---- Toggle ---- */
+.about-section-card__toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.about-section-card__toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.about-section-card__toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: var(--admin-border);
+    border-radius: 22px;
+    transition: background 0.2s;
+}
+
+.about-section-card__toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 2px;
+    top: 2px;
+    background: var(--admin-surface);
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.about-section-card__toggle input:checked + .about-section-card__toggle-slider {
+    background: var(--admin-success);
+}
+
+.about-section-card__toggle input:checked + .about-section-card__toggle-slider::before {
+    transform: translateX(18px);
+}
+
+/* ---- Status Badge ---- */
+.about-section-card__status-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.about-section-card__status-badge--published {
+    background: var(--admin-success-bg);
+    color: var(--admin-success);
+}
+
+.about-section-card__status-badge--draft {
+    background: var(--admin-warning-bg);
+    color: var(--admin-warning);
+}
+
+/* ---- Expand Button ---- */
+.about-section-card__expand {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--admin-text-muted);
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.15s;
+}
+
+.about-section-card__expand:hover {
+    background: var(--admin-surface-hover);
+}
+
+/* ---- Card Body ---- */
+.about-section-card__body {
+    border-top: 1px solid var(--admin-border-light);
+    padding: 16px;
+}
+
+.about-section-card__body[hidden] {
+    display: none;
+}
+
+/* ---- Form Grid ---- */
+.about-form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.about-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.about-form__field--full {
+    grid-column: 1 / -1;
+}
+
+.about-form__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--admin-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.about-field {
+    padding: 8px 12px;
+    border: 1px solid var(--admin-border);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.15s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.about-field:focus {
+    outline: none;
+    border-color: var(--admin-accent);
+    box-shadow: 0 0 0 3px var(--admin-accent-muted);
+}
+
+.about-field--text {}
+
+.about-field--textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.about-field--number {
+    max-width: 100px;
+}
+
+.about-field--select {
+    background: var(--admin-surface);
+    cursor: pointer;
+}
+
+/* ---- Image Field ---- */
+.about-image-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.about-image-preview-wrap {
+    width: 150px;
+    height: 100px;
+    border: 1px dashed var(--admin-border);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--admin-surface-hover);
+}
+
+.about-image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-image-empty {
+    color: var(--admin-text-subtle);
+    font-size: 12px;
+}
+
+.about-image-inputs {
+    display: flex;
+    gap: 8px;
+}
+
+/* ---- Toggle Switch ---- */
+.about-toggle {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.about-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.about-toggle__slider {
+    position: absolute;
+    inset: 0;
+    background: var(--admin-border);
+    border-radius: 24px;
+    transition: background 0.2s;
+}
+
+.about-toggle__slider::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    top: 2px;
+    background: var(--admin-surface);
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.about-toggle input:checked + .about-toggle__slider {
+    background: var(--admin-success);
+}
+
+.about-toggle input:checked + .about-toggle__slider::before {
+    transform: translateX(20px);
+}
+
+/* ---- Repeater ---- */
+.about-repeater {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.about-repeater__row {
+    border: 1px solid var(--admin-border);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.about-repeater__row-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: var(--admin-surface-hover);
+    border-bottom: 1px solid var(--admin-border-light);
+    cursor: grab;
+}
+
+.about-repeater__row-handle {
+    color: var(--admin-text-subtle);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.about-repeater__row-label {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--admin-text-muted);
+}
+
+.about-repeater__row-remove {
+    background: none;
+    border: none;
+    color: var(--admin-error);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+
+.about-repeater__row-remove:hover {
+    background: var(--admin-error-bg);
+}
+
+.about-repeater__row-body {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.about-repeater-add {
+    font-size: 13px;
+}
+
+/* ---- Form Actions ---- */
+.about-form__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--admin-border-light);
+    margin-top: 16px;
+}
+
+.about-save-status {
+    font-size: 13px;
+    margin-left: auto;
+}
+
+.about-save-status--success {
+    color: var(--admin-success);
+}
+
+.about-save-status--error {
+    color: var(--admin-error);
+}
+
+/* ---- Revisions Panel ---- */
+.about-revisions-panel {
+    border-top: 1px solid var(--admin-border-light);
+    margin-top: 12px;
+    padding-top: 12px;
+}
+
+.about-revisions-panel h4 {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--admin-text);
+}
+
+.about-revisions__list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.about-revisions__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 8px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--admin-border-light);
+}
+
+.about-revisions__date {
+    color: var(--admin-text-subtle);
+    white-space: nowrap;
+}
+
+.about-revisions__note {
+    flex: 1;
+    color: var(--admin-text-muted);
+}
+
+.about-revision-restore {
+    white-space: nowrap;
+}
+
+/* ---- Toolbar ---- */
+.admin-toolbar__hint {
+    color: var(--admin-text-subtle);
+    font-size: 13px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .about-form__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-section-card__header {
+        padding: 10px 12px;
+    }
+
+    .about-section-card__body {
+        padding: 12px;
+    }
+}

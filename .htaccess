@@ -1,0 +1,66 @@
+# Swap Design - Apache Configuration
+# Hostinger Premium Shared Hosting
+
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Disable directory listing
+Options -Indexes
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Remove trailing slashes (except directories)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# Pretty URLs: route all requests through index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Security: Block access to sensitive files
+<FilesMatch "\.(env|sql|log|md|gitignore)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order Allow,Deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Security: Block access to includes directory
+RewriteRule ^includes/ - [F,L]
+
+# Security: Block access to database directory
+RewriteRule ^database/ - [F,L]
+
+# Security: Block access to admin includes
+RewriteRule ^admin/includes/ - [F,L]
+
+# Security: Block access to logs and cache
+RewriteRule ^(logs|cache)/ - [F,L]
+
+# Caching for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Gzip Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# Custom Error Pages
+ErrorDocument 404 /pages/404.php
+ErrorDocument 500 /pages/500.php

@@ -1,0 +1,28 @@
+# Swap Design - Git Ignore
+# Exclude sensitive and environment-specific files
+
+# Environment / Config
+.env
+includes/config/database.php
+
+# Uploads (user-generated content)
+uploads/*
+!uploads/.gitkeep
+
+# Logs
+*.log
+logs/*
+!logs/.gitkeep
+
+# Cache
+cache/*
+!cache/.gitkeep
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE Files
+.vscode/
+.idea/
+*.sublime-*

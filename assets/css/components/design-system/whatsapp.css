@@ -1,0 +1,42 @@
+/* ============================================================
+   Swap Design — Floating WhatsApp Button (Phase 3)
+   ============================================================ */
+
+.floating-whatsapp {
+    position: fixed;
+    bottom: var(--ds-space-32);
+    right: var(--ds-space-32);
+    z-index: var(--z-overlay);
+}
+.floating-whatsapp__btn {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25d366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: transform var(--dur-base) var(--ease-out-back),
+                box-shadow var(--dur-base) var(--ease-out);
+    color: #fff;
+    cursor: pointer;
+}
+.floating-whatsapp__btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+}
+.floating-whatsapp__btn::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: rgba(37, 211, 102, 0.18);
+    animation: wa-pulse 2.4s ease-in-out infinite;
+}
+@keyframes wa-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.3); opacity: 0; }
+}
+.floating-whatsapp__icon { width: 28px; height: 28px; position: relative; z-index: 1; }

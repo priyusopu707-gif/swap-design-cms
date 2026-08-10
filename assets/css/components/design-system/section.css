@@ -1,0 +1,82 @@
+/* ============================================================
+   Swap Design — Section System (Phase 2)
+   Glass section panels, CTA blocks, hero wrapper.
+   ============================================================ */
+
+.section {
+    position: relative;
+    padding: var(--section-pad-y) 0;
+    overflow: hidden;
+}
+
+.section--dark {
+    background: var(--ds-dark-base);
+}
+
+.section--glass {
+    background: var(--ds-glass-bg);
+    -webkit-backdrop-filter: blur(var(--ds-glass-blur));
+    backdrop-filter: blur(var(--ds-glass-blur));
+    border-top: 1px solid var(--ds-glass-border);
+    border-bottom: 1px solid var(--ds-glass-border);
+}
+
+.section--gradient {
+    background: linear-gradient(180deg, var(--ds-dark-canvas) 0%, var(--ds-dark-base) 100%);
+}
+
+/* ---- Section header ---- */
+.section__header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto var(--ds-space-64);
+}
+
+.section__eyebrow {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ds-primary);
+    margin-bottom: var(--ds-space-12);
+    display: block;
+}
+
+.section__title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: var(--ds-text-heading);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--ds-space-16);
+}
+
+.section__title--gradient {
+    background: var(--ds-gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section__subtitle {
+    font-size: var(--fs-lg);
+    color: var(--ds-text-muted);
+    line-height: 1.7;
+    margin: 0 0 var(--ds-space-32);
+}
+
+/* ---- CTA Section ---- */
+.cta-section {
+    text-align: center;
+    padding: var(--ds-space-96) 0;
+    position: relative;
+}
+.cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 50%, var(--ds-primary-soft), transparent);
+    pointer-events: none;
+}
+.cta-section .cta-section__content { position: relative; z-index: 1; }

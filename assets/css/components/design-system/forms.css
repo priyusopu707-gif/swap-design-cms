@@ -1,0 +1,157 @@
+/* ============================================================
+   Swap Design — Form System (Phase 2)
+   Dark-first glass form inputs with validation + focus glow.
+   ============================================================ */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-space-8);
+    margin-bottom: var(--ds-space-20);
+}
+.form-group--row { flex-direction: row; align-items: center; gap: var(--ds-space-16); }
+
+.form-label {
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--ds-text-muted);
+    letter-spacing: 0.02em;
+}
+.form-label--required::after {
+    content: '*';
+    color: var(--ds-primary);
+    margin-left: var(--ds-space-4);
+}
+.form-hint {
+    font-size: var(--fs-xs);
+    color: var(--ds-text-subtle);
+}
+.form-error {
+    font-size: var(--fs-xs);
+    color: var(--ds-error);
+    display: none;
+}
+.form-group.has-error .form-error { display: block; }
+
+/* ---- Base input ---- */
+.input {
+    width: 100%;
+    padding: var(--ds-space-12) var(--ds-space-16);
+    background: var(--ds-glass-bg);
+    border: 1px solid var(--ds-glass-border);
+    border-radius: var(--ds-radius-8);
+    color: var(--ds-text-body);
+    font-family: var(--ds-font-body);
+    font-size: var(--fs-base);
+    line-height: 1.5;
+    transition:
+        border-color var(--dur-fast) var(--ease-out),
+        background var(--dur-fast) var(--ease-out),
+        box-shadow var(--dur-fast) var(--ease-out);
+}
+.input::placeholder { color: var(--ds-text-subtle); }
+.input:hover { border-color: var(--ds-glass-border-hover); }
+.input:focus {
+    outline: none;
+    border-color: var(--ds-primary);
+    box-shadow: 0 0 0 3px var(--ds-primary-soft);
+}
+.input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ---- Error state ---- */
+.input--error {
+    border-color: var(--ds-error);
+}
+.input--error:focus {
+    box-shadow: 0 0 0 3px var(--ds-error-soft);
+}
+
+/* ---- Success state ---- */
+.input--success { border-color: var(--ds-success); }
+
+/* ---- Sizes ---- */
+.input--sm { padding: var(--ds-space-8) var(--ds-space-12); font-size: var(--fs-sm); }
+.input--lg { padding: var(--ds-space-16) var(--ds-space-20); font-size: var(--fs-lg); }
+
+/* ---- Textarea ---- */
+textarea.input {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* ---- Select ---- */
+select.input {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--ds-space-16) center;
+    padding-right: var(--ds-space-40);
+}
+
+/* ---- Checkbox / Radio ---- */
+.input-check {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-12);
+    cursor: pointer;
+    font-size: var(--fs-sm);
+    color: var(--ds-text-body);
+    user-select: none;
+}
+.input-check input[type="checkbox"],
+.input-check input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.input-check__mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--ds-glass-border-hover);
+    border-radius: 4px;
+    background: var(--ds-glass-bg);
+    flex-shrink: 0;
+    transition: all var(--dur-fast) var(--ease-out);
+}
+.input-check input[type="radio"] + .input-check__mark { border-radius: 50%; }
+.input-check input:checked + .input-check__mark {
+    background: var(--ds-primary);
+    border-color: var(--ds-primary);
+}
+.input-check input:checked + .input-check__mark::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) translateY(-1px);
+}
+.input-check input[type="radio"]:checked + .input-check__mark::after {
+    width: 8px;
+    height: 8px;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    transform: none;
+}
+.input-check input:focus-visible + .input-check__mark {
+    box-shadow: 0 0 0 3px var(--ds-primary-soft);
+}
+
+/* ---- Form row (inline) ---- */
+.form-row {
+    display: flex;
+    gap: var(--ds-space-16);
+    flex-wrap: wrap;
+}
+.form-row > .form-group { flex: 1; min-width: 200px; }

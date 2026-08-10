@@ -1,0 +1,57 @@
+/* ============================================================
+   Swap Design — Modal (Phase 3)
+   ============================================================ */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 7, 15, 0.72);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--ds-space-24);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--dur-base) var(--ease-out),
+                visibility var(--dur-base) var(--ease-out);
+}
+.modal-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+.modal {
+    position: relative;
+    background: var(--ds-dark-surface);
+    border: 1px solid var(--ds-glass-border);
+    border-radius: var(--ds-radius-20);
+    padding: var(--ds-space-40);
+    max-width: 560px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.92) translateY(24px);
+    transition: transform var(--dur-base) var(--ease-out-back);
+}
+.modal-overlay.is-open .modal {
+    transform: scale(1) translateY(0);
+}
+.modal__close {
+    position: absolute;
+    top: var(--ds-space-16);
+    right: var(--ds-space-16);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--ds-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ds-text-muted);
+    background: var(--ds-glass-bg);
+    border: 1px solid var(--ds-glass-border);
+    cursor: pointer;
+    transition: all var(--dur-fast) var(--ease-out);
+}
+.modal__close:hover { background: var(--ds-glass-bg-hover); color: var(--ds-text-heading); }

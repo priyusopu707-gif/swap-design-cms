@@ -1,0 +1,58 @@
+/* ============================================================
+   Swap Design — 3D Cards & Effects (Phase 5)
+   Lightweight CSS 3D transforms.
+   ============================================================ */
+
+.perspective {
+    perspective: 1000px;
+}
+
+.tilt-card {
+    transform-style: preserve-3d;
+    transition: transform var(--dur-slow) var(--ease-out);
+}
+.tilt-card:hover {
+    transform: rotateX(4deg) rotateY(-4deg) translateY(-6px);
+}
+
+.card-3d-inner {
+    transform-style: preserve-3d;
+}
+.card-3d-inner > * {
+    transform: translateZ(20px);
+}
+
+/* Floating animation */
+@keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+}
+.float { animation: float-y 4s ease-in-out infinite; }
+.float--slow  { animation-duration: 6s; }
+.float--fast  { animation-duration: 3s; }
+
+/* Gradient background animation */
+@keyframes gradient-shift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.gradient-animate {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+}
+
+/* Ambient blob keyframes (pure CSS — used in hero) */
+@keyframes blob-drift-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25%       { transform: translate(30px, -40px) scale(1.05); }
+    50%       { transform: translate(-20px, -60px) scale(0.95); }
+    75%       { transform: translate(-40px, -20px) scale(1.02); }
+}
+@keyframes blob-drift-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%       { transform: translate(-50px, 30px) scale(1.08); }
+    66%       { transform: translate(30px, 50px) scale(0.92); }
+}
+.blob-1 { animation: blob-drift-1 20s ease-in-out infinite; }
+.blob-2 { animation: blob-drift-2 25s ease-in-out infinite; }

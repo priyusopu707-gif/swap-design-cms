@@ -1,0 +1,47 @@
+/* ============================================================
+   Swap Design — Progress & Loading
+   Scroll progress bar, skeleton loaders, shimmer.
+   ============================================================ */
+
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--ds-gradient-primary);
+    z-index: var(--z-modal);
+    transition: width 80ms linear;
+}
+
+/* ---- Skeleton / Shimmer ---- */
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, var(--ds-glass-bg) 25%, var(--ds-glass-bg-hover) 50%, var(--ds-glass-bg) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: var(--ds-radius-8);
+}
+
+.skeleton--text {
+    height: 1em;
+    width: 100%;
+    border-radius: var(--ds-radius-4);
+}
+
+.skeleton--circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+/* Skeleton variants */
+.skeleton--lg { height: 20px; border-radius: var(--ds-radius-8); }
+.skeleton--sm { height: 12px; border-radius: var(--ds-radius-4); }
+.skeleton--card { height: 180px; border-radius: var(--ds-radius-16); }
+.skeleton--img  { aspect-ratio: 16/9; border-radius: var(--ds-radius-12); }

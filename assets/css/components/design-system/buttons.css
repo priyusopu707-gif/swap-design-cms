@@ -1,0 +1,159 @@
+/* ============================================================
+   Swap Design — Button System (Phase 2)
+   Dark-first, glass-ready, gradient primary.
+   ============================================================ */
+
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ds-space-8);
+    padding: var(--ds-space-12) var(--ds-space-24);
+    font-family: var(--ds-font-body);
+    font-size: var(--fs-base);
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: var(--ds-radius-12);
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    transition:
+        transform var(--dur-base) var(--ease-out),
+        background var(--dur-base) var(--ease-out),
+        border-color var(--dur-base) var(--ease-out),
+        box-shadow var(--dur-base) var(--ease-out),
+        color var(--dur-fast) var(--ease-out);
+}
+.btn:focus-visible {
+    outline: 2px solid var(--ds-primary);
+    outline-offset: 3px;
+}
+
+/* ---- Ripple effect (JS adds .btn__ripple) ---- */
+.btn__ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    transform: scale(0);
+    animation: ripple-anim 0.6s ease-out forwards;
+    pointer-events: none;
+}
+@keyframes ripple-anim {
+    to { transform: scale(4); opacity: 0; }
+}
+
+/* ---- Primary (gradient fill) ---- */
+.btn--primary {
+    background: var(--ds-gradient-primary);
+    color: #fff;
+    box-shadow: var(--ds-shadow-soft), 0 0 16px var(--ds-primary-soft);
+}
+.btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--ds-shadow-medium), 0 0 32px var(--ds-primary-soft);
+}
+.btn--primary:active { transform: translateY(0); }
+
+/* ---- Secondary (glass) ---- */
+.btn--secondary {
+    background: var(--ds-glass-bg);
+    color: var(--ds-text-body);
+    border-color: var(--ds-glass-border);
+}
+.btn--secondary:hover {
+    background: var(--ds-glass-bg-hover);
+    border-color: var(--ds-glass-border-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--ds-shadow-soft);
+}
+
+/* ---- Outline ---- */
+.btn--outline {
+    background: transparent;
+    color: var(--ds-primary);
+    border-color: var(--ds-primary);
+}
+.btn--outline:hover {
+    background: var(--ds-primary);
+    color: #fff;
+}
+
+/* ---- Ghost ---- */
+.btn--ghost {
+    background: transparent;
+    color: var(--ds-text-body);
+}
+.btn--ghost:hover {
+    background: var(--ds-glass-bg);
+    color: var(--ds-text-heading);
+}
+
+/* ---- CTA (large gradient) ---- */
+.btn--cta {
+    background: var(--ds-gradient-brand);
+    color: #fff;
+    padding: var(--ds-space-16) var(--ds-space-40);
+    font-size: var(--fs-lg);
+    border-radius: var(--ds-radius-16);
+    box-shadow: var(--ds-shadow-soft), 0 0 20px var(--ds-primary-soft);
+}
+.btn--cta:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--ds-shadow-medium), 0 0 40px var(--ds-primary-soft);
+}
+
+/* ---- Accent (alternative gradient) ---- */
+.btn--accent {
+    background: var(--ds-gradient-accent);
+    color: #fff;
+    box-shadow: var(--ds-shadow-soft), 0 0 20px var(--ds-secondary-soft);
+}
+.btn--accent:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--ds-shadow-medium), 0 0 32px var(--ds-secondary-soft);
+}
+
+/* ---- WhatsApp (solid green) ---- */
+.btn--whatsapp {
+    background: #25d366;
+    color: #fff;
+    box-shadow: var(--ds-shadow-soft), 0 0 16px rgba(37,211,102,0.3);
+}
+.btn--whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--ds-shadow-medium), 0 0 24px rgba(37,211,102,0.4);
+}
+
+/* ---- Sizes ---- */
+.btn--xs  { padding: var(--ds-space-4)  var(--ds-space-12); font-size: var(--fs-xs);  border-radius: var(--ds-radius-8); }
+.btn--sm  { padding: var(--ds-space-8)  var(--ds-space-16); font-size: var(--fs-sm);  border-radius: var(--ds-radius-8); }
+.btn--lg  { padding: var(--ds-space-16) var(--ds-space-32); font-size: var(--fs-lg);  border-radius: var(--ds-radius-12); }
+.btn--xl  { padding: var(--ds-space-20) var(--ds-space-40); font-size: var(--fs-xl);  border-radius: var(--ds-radius-12); }
+.btn--block { width: 100%; }
+
+/* ---- Icon-only ---- */
+.btn--icon {
+    padding: var(--ds-space-12);
+    border-radius: var(--radius-full);
+}
+
+/* ---- Loading state ---- */
+.btn--loading { pointer-events: none; }
+.btn--loading .btn__label { opacity: 0; }
+.btn--loading::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- Pill ---- */
+.btn--pill { border-radius: var(--radius-full); }

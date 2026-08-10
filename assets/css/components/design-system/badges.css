@@ -1,0 +1,28 @@
+/* Swap Design — Badge System */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    line-height: 1.4;
+    white-space: nowrap;
+}
+.badge--primary { background: var(--ds-primary-soft); color: var(--ds-primary); }
+.badge--accent  { background: var(--ds-secondary-soft); color: var(--ds-secondary); }
+.badge--success { background: var(--ds-success-soft); color: var(--ds-success); }
+.badge--warning { background: var(--ds-warning-soft); color: var(--ds-warning); }
+.badge--error   { background: var(--ds-error-soft); color: var(--ds-error); }
+.badge--muted   { background: var(--ds-glass-bg); color: var(--ds-text-muted); border: 1px solid var(--ds-glass-border); }
+.badge--glow {
+    background: var(--ds-primary-soft);
+    color: var(--ds-primary);
+    box-shadow: 0 0 12px var(--ds-primary-soft);
+}
+.badge--outline {
+    background: transparent;
+    border: 1px solid var(--ds-glass-border-hover);
+    color: var(--ds-text-muted);
+}

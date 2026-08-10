@@ -1,0 +1,140 @@
+/* ============================================================
+   Swap Design - Responsive Styles
+   Mobile-first approach.
+   Breakpoints (mirrored from site.php -> breakpoints):
+     sm:  640px   (large phones)
+     md:  768px   (tablets)
+     lg:  1024px  (small desktops)
+     xl:  1280px  (desktops)
+     2xl: 1440px  (large desktops)
+     3xl: 1920px  (extra large screens)
+   ============================================================ */
+
+/* ============================================================
+   480px: Small Mobile (360–480px devices)
+   ============================================================ */
+@media (min-width: 480px) {
+    .container { --container-padding: 1rem; }
+}
+
+/* ============================================================
+   sm: 640px+ (Large Phones)
+   ============================================================ */
+@media (min-width: 640px) {
+    :root {
+        --container-padding: 1.5rem;
+    }
+}
+
+/* ============================================================
+   md: 768px+ (Tablets)
+   ============================================================ */
+@media (min-width: 768px) {
+    :root {
+        --container-padding: 2rem;
+        --section-padding-y: var(--space-4xl);
+    }
+
+    /* Navigation - show desktop menu */
+    .nav-menu {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+
+    /* Footer grid - 2 columns */
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ============================================================
+   lg: 1024px+ (Small Desktops)
+   ============================================================ */
+@media (min-width: 1024px) {
+    :root {
+        --container-padding: 2.5rem;
+    }
+
+    /* Footer grid - 4 columns */
+    .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+
+    /* Typography scale up */
+    :root {
+        --fs-base: 1.0625rem;
+    }
+}
+
+/* ============================================================
+   xl: 1280px+ (Desktops)
+   ============================================================ */
+@media (min-width: 1280px) {
+    :root {
+        --container-padding: 3rem;
+        --section-padding-y: var(--space-5xl);
+    }
+}
+
+/* ============================================================
+   2xl: 1440px+ (Large Desktops)
+   ============================================================ */
+@media (min-width: 1440px) {
+    :root {
+        --container-padding: 3rem;
+    }
+}
+
+/* ============================================================
+   Reduced Motion Preference
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ============================================================
+   Dark Mode Preference (future - feature flag in site.php)
+   ============================================================ */
+/* @media (prefers-color-scheme: dark) {
+    :root { ... }
+} */
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+@media print {
+    .site-nav,
+    .site-footer,
+    .cta-section,
+    .skip-link,
+    .nav-toggle,
+    .social-links {
+        display: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        color: #000;
+        background: #fff;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+
+    @page {
+        margin: 2cm;
+    }
+}

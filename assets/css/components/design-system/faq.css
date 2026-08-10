@@ -1,0 +1,50 @@
+/* ============================================================
+   Swap Design — FAQ Accordion (Phase 3)
+   ============================================================ */
+
+.faq-list { display: flex; flex-direction: column; gap: var(--ds-space-12); }
+.faq-item {
+    border: 1px solid var(--ds-glass-border);
+    border-radius: var(--ds-radius-12);
+    overflow: hidden;
+    background: var(--ds-glass-bg);
+    transition: border-color var(--dur-fast) var(--ease-out);
+}
+.faq-item.is-open { border-color: var(--ds-glass-border-hover); }
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ds-space-16);
+    padding: var(--ds-space-20) var(--ds-space-24);
+    font-size: var(--fs-base);
+    font-weight: 600;
+    color: var(--ds-text-heading);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background var(--dur-fast) var(--ease-out);
+}
+.faq-question:hover { background: var(--ds-glass-bg-hover); }
+.faq-chevron {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--ds-text-muted);
+    transition: transform var(--dur-base) var(--ease-out);
+}
+.faq-item.is-open .faq-chevron { transform: rotate(180deg); color: var(--ds-primary); }
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--dur-slow) var(--ease-out-expo);
+}
+.faq-answer-inner {
+    padding: 0 var(--ds-space-24) var(--ds-space-20);
+    font-size: var(--fs-sm);
+    color: var(--ds-text-body);
+    line-height: 1.7;
+}

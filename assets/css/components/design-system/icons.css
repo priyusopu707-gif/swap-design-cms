@@ -1,0 +1,30 @@
+/* ============================================================
+   Swap Design — Icon System (Lucide / SimpleIcons / Tabler)
+   SVG inline, stroke-based, scalable.
+   ============================================================ */
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: currentColor;
+}
+
+.icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.icon--sm  { width: 16px; height: 16px; }
+.icon--md  { width: 20px; height: 20px; }
+.icon--lg  { width: 24px; height: 24px; }
+.icon--xl  { width: 32px; height: 32px; }
+.icon--2xl { width: 48px; height: 48px; }
+.icon--brand svg { stroke: none; fill: currentColor; }

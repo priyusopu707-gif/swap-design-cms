@@ -1,0 +1,29 @@
+/* ============================================================
+   Swap Design — Empty State (Phase 3)
+   ============================================================ */
+
+.empty-state {
+    text-align: center;
+    padding: var(--ds-space-80) var(--ds-space-32);
+    color: var(--ds-text-muted);
+}
+.empty-state__icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--ds-space-24);
+    color: var(--ds-text-subtle);
+    opacity: 0.5;
+}
+.empty-state__title {
+    font-size: var(--fs-xl);
+    font-weight: 600;
+    color: var(--ds-text-heading);
+    margin: 0 0 var(--ds-space-8);
+}
+.empty-state__message {
+    font-size: var(--fs-sm);
+    color: var(--ds-text-muted);
+    max-width: 360px;
+    margin: 0 auto var(--ds-space-24);
+    line-height: 1.6;
+}

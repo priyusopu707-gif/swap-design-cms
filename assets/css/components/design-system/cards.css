@@ -1,0 +1,407 @@
+/* ============================================================
+   Swap Design — Card System (Phase 2)
+   Glass cards: base, service, portfolio, testimonial, pricing, blog, stat.
+   ============================================================ */
+
+/* ---- Base glass card ---- */
+.card {
+    position: relative;
+    background: var(--ds-glass-bg);
+    -webkit-backdrop-filter: blur(var(--ds-glass-blur));
+    backdrop-filter: blur(var(--ds-glass-blur));
+    border: 1px solid var(--ds-glass-border);
+    border-radius: var(--ds-radius-16);
+    overflow: hidden;
+    transition:
+        transform var(--dur-base) var(--ease-out),
+        box-shadow var(--dur-base) var(--ease-out),
+        border-color var(--dur-base) var(--ease-out);
+}
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.30), transparent);
+    opacity: 0.5;
+    pointer-events: none;
+}
+.card__body   { padding: var(--ds-space-24); }
+.card__header { padding: var(--ds-space-24) var(--ds-space-24) 0; }
+.card__footer { padding: 0 var(--ds-space-24) var(--ds-space-24); }
+
+/* ---- Hover lift ---- */
+.card--lift:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--ds-shadow-glass);
+    border-color: var(--ds-glass-border-hover);
+}
+
+/* ---- Glow on hover ---- */
+.card--glow:hover {
+    box-shadow: 0 0 40px var(--ds-primary-soft), var(--ds-shadow-glass);
+    border-color: rgba(255, 77, 46, 0.2);
+}
+
+/* ============================================================
+   Service Card
+   ============================================================ */
+.card--service {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-space-16);
+}
+.card--service .card__body {
+    height: 100%;
+}
+.card--service .card__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--ds-radius-12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ds-primary-soft);
+    color: var(--ds-primary);
+    flex-shrink: 0;
+}
+.card--service .card__icon svg {
+    width: 28px;
+    height: 28px;
+}
+.card--service .card__title {
+    font-size: var(--fs-xl);
+    font-weight: 600;
+    color: var(--ds-text-heading);
+    margin: 0;
+}
+.card--service .card__desc {
+    font-size: var(--fs-sm);
+    color: var(--ds-text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+.card--service .card__arrow {
+    margin-top: auto;
+    color: var(--ds-primary);
+    transition: transform var(--dur-fast) var(--ease-out);
+}
+.card--service:hover .card__arrow { transform: translateX(4px); }
+
+/* ============================================================
+   Portfolio Card
+   ============================================================ */
+.card--portfolio {
+    overflow: hidden;
+}
+.card--portfolio .card__img-wrap {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--ds-dark-surface);
+}
+.card--portfolio .card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-out);
+}
+.card--portfolio:hover .card__img { transform: scale(1.06); }
+.card--portfolio .card__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 7, 15, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.35s var(--ease-out);
+}
+.card--portfolio:hover .card__overlay { opacity: 1; }
+.card--portfolio .card__overlay-btn {
+    padding: var(--ds-space-12) var(--ds-space-24);
+    border: 1px solid #fff;
+    border-radius: var(--ds-radius-8);
+    color: #fff;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all var(--dur-fast) var(--ease-out);
+}
+.card--portfolio .card__overlay-btn:hover {
+    background: #fff;
+    color: var(--ds-dark-canvas);
+}
+.card--portfolio .card__meta {
+    padding: var(--ds-space-20) var(--ds-space-24);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-space-8);
+}
+.card--portfolio .card__category {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ds-primary);
+    font-weight: 600;
+}
+.card--portfolio .card__title {
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--ds-text-heading);
+    margin: 0;
+}
+
+/* ============================================================
+   Testimonial Card
+   ============================================================ */
+.card--testimonial {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-space-16);
+}
+.card--testimonial .card__stars {
+    display: flex;
+    gap: 2px;
+    color: var(--ds-warning);
+}
+.card--testimonial .card__quote {
+    font-size: var(--fs-base);
+    color: var(--ds-text-body);
+    line-height: 1.7;
+    font-style: italic;
+    margin: 0;
+}
+.card--testimonial .card__author {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-12);
+    margin-top: auto;
+    padding-top: var(--ds-space-16);
+    border-top: 1px solid var(--ds-glass-border);
+}
+.card--testimonial .card__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--ds-glass-border);
+}
+.card--testimonial .card__name {
+    font-weight: 600;
+    color: var(--ds-text-heading);
+    font-size: var(--fs-sm);
+}
+.card--testimonial .card__role {
+    font-size: var(--fs-xs);
+    color: var(--ds-text-muted);
+}
+
+/* ============================================================
+   Pricing Card
+   ============================================================ */
+.card--pricing {
+    text-align: center;
+    padding: var(--ds-space-32) var(--ds-space-24);
+}
+.card--pricing .card__badge {
+    margin-bottom: var(--ds-space-12);
+}
+.card--pricing .card__plan {
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--ds-text-heading);
+    margin: 0 0 var(--ds-space-8);
+}
+.card--pricing .card__price {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--ds-text-heading);
+    line-height: 1;
+}
+.card--pricing .card__price span {
+    font-size: var(--fs-sm);
+    font-weight: 400;
+    color: var(--ds-text-muted);
+}
+.card--pricing .card__desc {
+    font-size: var(--fs-sm);
+    color: var(--ds-text-muted);
+    margin: var(--ds-space-12) 0 var(--ds-space-24);
+}
+.card--pricing .card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--ds-space-24);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-space-12);
+    text-align: left;
+}
+.card--pricing .card__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ds-space-12);
+    font-size: var(--fs-sm);
+    color: var(--ds-text-body);
+}
+.card--pricing .card__feature svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--ds-success);
+}
+.card--pricing .card__cta {
+    margin-top: auto;
+    width: 100%;
+}
+.card--pricing--featured {
+    border-color: var(--ds-primary-soft);
+    background: linear-gradient(180deg, var(--ds-primary-soft), var(--ds-glass-bg));
+}
+.card--pricing--featured::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--ds-radius-16);
+    padding: 2px;
+    background: var(--ds-gradient-primary);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+}
+
+/* ============================================================
+   Blog Card
+   ============================================================ */
+.card--blog {
+    display: flex;
+    flex-direction: column;
+}
+.card--blog .card__img-wrap {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--ds-dark-surface);
+}
+.card--blog .card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-out);
+}
+.card--blog:hover .card__img { transform: scale(1.04); }
+.card--blog .card__meta {
+    padding: var(--ds-space-20) var(--ds-space-24);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-space-12);
+    flex: 1;
+}
+.card--blog .card__top {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-12);
+}
+.card--blog .card__date {
+    font-size: var(--fs-xs);
+    color: var(--ds-text-muted);
+}
+.card--blog .card__title {
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--ds-text-heading);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.card--blog .card__excerpt {
+    font-size: var(--fs-sm);
+    color: var(--ds-text-muted);
+    line-height: 1.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ============================================================
+   Stat Card
+   ============================================================ */
+.card--stat {
+    text-align: center;
+    padding: var(--ds-space-32) var(--ds-space-16);
+}
+.card--stat .card__number {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    color: var(--ds-text-heading);
+    line-height: 1;
+    margin-bottom: var(--ds-space-8);
+}
+.card--stat .card__number span {
+    background: var(--ds-gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.card--stat .card__label {
+    font-size: var(--fs-sm);
+    color: var(--ds-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+}
+
+/* ============================================================
+   Team Card
+   ============================================================ */
+.card--team {
+    text-align: center;
+    padding: var(--ds-space-24) var(--ds-space-16);
+}
+.card--team .card__avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--ds-glass-border);
+    margin: 0 auto var(--ds-space-16);
+}
+.card--team .card__name {
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--ds-text-heading);
+    margin: 0 0 var(--ds-space-4);
+}
+.card--team .card__role {
+    font-size: var(--fs-sm);
+    color: var(--ds-text-muted);
+    margin: 0 0 var(--ds-space-12);
+}
+.card--team .card__socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--ds-space-8);
+}
+.card--team .card__social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ds-glass-bg);
+    border: 1px solid var(--ds-glass-border);
+    color: var(--ds-text-muted);
+    transition: all var(--dur-fast) var(--ease-out);
+}
+.card--team .card__social-link:hover {
+    background: var(--ds-primary-soft);
+    border-color: var(--ds-primary);
+    color: var(--ds-primary);
+}

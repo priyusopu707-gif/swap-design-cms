@@ -1,0 +1,93 @@
+/* ============================================================
+   Swap Design — Components (unique only)
+   Breadcrumbs and Accordion live here.
+   Pagination, Tabs, Modal, Drawer, Toast, Empty State, WhatsApp,
+   and Back-to-top each have their own dedicated file under
+   components/design-system/ (see head.php load order).
+   ============================================================ */
+
+/* ---- Breadcrumbs ---- */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-8);
+    flex-wrap: wrap;
+    font-size: var(--fs-sm);
+    color: var(--ds-text-muted);
+    margin-bottom: var(--ds-space-32);
+}
+.breadcrumbs__item {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-8);
+}
+.breadcrumbs__link {
+    color: var(--ds-text-muted);
+    transition: color var(--dur-fast) var(--ease-out);
+    text-decoration: none;
+}
+.breadcrumbs__link:hover { color: var(--ds-text-heading); }
+.breadcrumbs__sep { color: var(--ds-text-subtle); }
+
+/* ---- FAQ Accordion ---- */
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-space-12);
+}
+.accordion__item {
+    border: 1px solid var(--ds-glass-border);
+    border-radius: var(--ds-radius-12);
+    overflow: hidden;
+    background: var(--ds-glass-bg);
+    transition: border-color var(--dur-fast) var(--ease-out);
+}
+.accordion__item.is-open {
+    border-color: var(--ds-glass-border-hover);
+}
+.accordion__button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ds-space-16);
+    padding: var(--ds-space-20) var(--ds-space-24);
+    text-align: left;
+    font-size: var(--fs-base);
+    font-weight: 600;
+    color: var(--ds-text-heading);
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: background var(--dur-fast) var(--ease-out);
+}
+.accordion__button:hover {
+    background: var(--ds-glass-bg-hover);
+}
+.accordion__button:focus-visible {
+    outline: 2px solid var(--ds-primary);
+    outline-offset: -2px;
+    border-radius: var(--ds-radius-12);
+}
+.accordion__chevron {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--ds-text-muted);
+    transition: transform var(--dur-base) var(--ease-out);
+}
+.accordion__item.is-open .accordion__chevron {
+    transform: rotate(180deg);
+    color: var(--ds-primary);
+}
+.accordion__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--dur-slow) var(--ease-out-expo);
+}
+.accordion__content-inner {
+    padding: 0 var(--ds-space-24) var(--ds-space-20);
+    color: var(--ds-text-body);
+    font-size: var(--fs-sm);
+    line-height: 1.7;
+}

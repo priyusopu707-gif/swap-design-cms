@@ -1,0 +1,103 @@
+/* ============================================================
+   Swap Design — Glassmorphism System (Phase 2)
+   Reusable frosted-glass surfaces with hover elevate + glow.
+   ============================================================ */
+
+.glass {
+    position: relative;
+    background: var(--ds-glass-bg);
+    -webkit-backdrop-filter: blur(var(--ds-glass-blur));
+    backdrop-filter: blur(var(--ds-glass-blur));
+    border: 1px solid var(--ds-glass-border);
+    border-radius: var(--ds-radius-16);
+    overflow: hidden;
+    transition:
+        transform var(--dur-base) var(--ease-out),
+        background var(--dur-base) var(--ease-out),
+        border-color var(--dur-base) var(--ease-out),
+        box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* Top-edge light reflection (premium glass highlight) */
+.glass::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.glass:hover {
+    background: var(--ds-glass-bg-hover);
+    border-color: var(--ds-glass-border-hover);
+}
+
+.glass--elevated {
+    background: linear-gradient(180deg, var(--ds-glass-bg-hover), var(--ds-glass-bg));
+    box-shadow: var(--ds-shadow-glass);
+}
+
+.glass--hoverable {
+    cursor: pointer;
+}
+.glass--hoverable:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--ds-shadow-glass);
+    border-color: var(--ds-glass-border-hover);
+    background: var(--ds-glass-bg-hover);
+}
+
+.glass--glow:hover {
+    box-shadow: 0 0 40px var(--ds-primary-soft), var(--ds-shadow-glass);
+    border-color: var(--ds-primary-soft);
+}
+
+.glass--interactive {
+    cursor: pointer;
+}
+.glass--interactive:hover,
+.glass--interactive:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 24px var(--ds-primary-soft);
+    border-color: var(--ds-glass-border-hover);
+}
+
+/* Inner padding helpers */
+.glass .glass__pad { padding: var(--ds-space-24); }
+
+/* ============================================================
+   Glass variants
+   ============================================================ */
+.glass--primary-tint {
+    background: linear-gradient(180deg, var(--ds-primary-soft), var(--ds-glass-bg));
+}
+.glass--accent-tint {
+    background: linear-gradient(180deg, var(--ds-secondary-soft), var(--ds-glass-bg));
+}
+
+/* ============================================================
+   Utility: ambient gradient blobs
+   ============================================================ */
+.ambient {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    pointer-events: none;
+}
+.ambient--primary { background: var(--ds-primary-soft); }
+.ambient--accent  { background: var(--ds-secondary-soft); }
+.ambient--pink    { background: var(--ds-accent-soft); }
+
+/* ============================================================
+   Section glass panel (full-bleed frosted band)
+   ============================================================ */
+.section--glass {
+    background: var(--ds-glass-bg);
+    -webkit-backdrop-filter: blur(var(--ds-glass-blur));
+    backdrop-filter: blur(var(--ds-glass-blur));
+    border-top: 1px solid var(--ds-glass-border);
+    border-bottom: 1px solid var(--ds-glass-border);
+}

@@ -1,0 +1,24 @@
+/* Call To Action Component */
+.cta-section {
+    background: var(--color-bg-alt);
+    text-align: center;
+    padding: var(--space-3xl) 0;
+}
+
+.cta-title {
+    margin-bottom: var(--space-sm);
+}
+
+.cta-text {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--space-xl);
+    color: var(--color-text-light);
+    font-size: var(--fs-lg);
+}
+
+.cta-button {
+    padding: var(--space-md) var(--space-2xl);
+    font-size: var(--fs-lg);
+}

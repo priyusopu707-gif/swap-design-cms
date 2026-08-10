@@ -1,0 +1,338 @@
+/* ============================================================
+   Swap Design - Master Layout Styles
+   Page structure: main content area, page header banner,
+   404 error page, and section spacing.
+   ============================================================ */
+
+/* ============================================================
+   Main Content Area
+   ============================================================ */
+.main-content {
+    min-height: 60vh;
+    outline: none;
+}
+
+.main-content:focus {
+    outline: none;
+}
+
+/* ============================================================
+   Page Header Banner
+   Inner-page heading with muted background. Homepage
+   handles its own hero section, so this only renders
+   on sub-pages (about, services, contact, etc.)
+   ============================================================ */
+.page-header {
+    background: var(--color-bg-alt);
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    border-bottom: var(--border-width) solid var(--color-border-light);
+}
+
+.page-header__title {
+    margin-bottom: 0;
+    color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+    .page-header {
+        padding: var(--space-4xl) 0 var(--space-3xl);
+    }
+}
+
+@media (min-width: 1280px) {
+    .page-header {
+        padding: var(--space-5xl) 0 var(--space-3xl);
+    }
+}
+
+/* ============================================================
+   404 Error Page
+   ============================================================ */
+.error-page {
+    padding: var(--space-4xl) 0;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+}
+
+.error-page__content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.error-page__code {
+    display: block;
+    font-size: clamp(4rem, 10vw, var(--fs-6xl));
+    font-weight: var(--weight-black);
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: var(--space-md);
+    letter-spacing: var(--tracking-tight);
+}
+
+.error-page__title {
+    margin-bottom: var(--space-md);
+}
+
+.error-page__text {
+    color: var(--color-text-light);
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.error-page__actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+    .error-page {
+        padding: var(--space-5xl) 0;
+    }
+}
+
+/* ============================================================
+   Generic Section Spacing Utility
+   For page content sections that need consistent vertical rhythm.
+   ============================================================ */
+.section {
+    padding: var(--section-padding-y) 0;
+}
+
+.section--sm {
+    padding: var(--section-padding-y-sm) 0;
+}
+
+.section--alt {
+    background-color: var(--color-bg-alt);
+}
+
+.section--dark {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-on-dark);
+}
+
+.section--dark .section__heading {
+    color: #ffffff;
+}
+
+.section__heading {
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+.section__subheading {
+    max-width: 650px;
+    margin: 0 auto var(--space-2xl);
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: var(--fs-lg);
+}
+
+/* ============================================================
+   Layout Row: Content + Sidebar (two-column layout)
+   Used by RenderingEngine::assembleLayout()
+   ============================================================ */
+.layout-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+}
+
+.layout-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.layout-sidebar {
+    flex: 0 0 300px;
+}
+
+@media (min-width: 1024px) {
+    .layout-row--with-sidebar {
+        flex-direction: row;
+    }
+}
+
+/* ============================================================
+   Content Entry Cards (Grid + Card)
+   Used by RenderingEngine for content type archives
+   and section type "content_entries"
+   ============================================================ */
+.content-entries {
+    padding: var(--space-2xl) 0;
+}
+
+.content-entries--grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+}
+
+@media (min-width: 640px) {
+    .content-entries--grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .content-entries--grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.content-entry-card {
+    background: var(--color-bg);
+    border: var(--border-width) solid var(--color-border-light);
+    border-radius: var(--radius-default);
+    overflow: hidden;
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.content-entry-card:hover {
+    box-shadow: var(--shadow-default);
+    transform: translateY(-2px);
+}
+
+.content-entry-card__image {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+}
+
+.content-entry-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-entry-card__body {
+    padding: var(--space-lg);
+}
+
+.content-entry-card__title {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--space-sm);
+}
+
+.content-entry-card__title a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.content-entry-card__title a:hover {
+    color: var(--color-accent);
+}
+
+.content-entry-card__excerpt {
+    color: var(--color-text-light);
+    font-size: var(--fs-sm);
+    line-height: var(--line-height);
+}
+
+/* ============================================================
+   Content Entry Single Page
+   Used by RenderingEngine for content type single entry
+   ============================================================ */
+.content-entry-single {
+    padding: var(--space-2xl) 0 var(--space-4xl);
+}
+
+.content-entry-single__body {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.content-entry-field {
+    margin-bottom: var(--space-lg);
+}
+
+/* ============================================================
+   Dynamic List Section
+   Used by RenderingEngine section type "dynamic_list"
+   ============================================================ */
+.dynamic-list {
+    padding: var(--space-2xl) 0;
+}
+
+.dynamic-list--card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+    .dynamic-list--card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .dynamic-list--card {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.dynamic-list__item {
+    padding: var(--space-lg);
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-default);
+    transition: background var(--transition-fast);
+}
+
+.dynamic-list__item:hover {
+    background: var(--color-accent-muted);
+}
+
+.dynamic-list__item a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: var(--weight-medium);
+}
+
+.dynamic-list__item a:hover {
+    color: var(--color-accent);
+}
+
+/* ============================================================
+   Empty State
+   Used by RenderingEngine when no homepage is set
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: var(--space-4xl) var(--space-lg);
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-state h1 {
+    margin-bottom: var(--space-md);
+}
+
+.empty-state p {
+    color: var(--color-text-light);
+    max-width: 400px;
+}
+
+/* ============================================================
+   Print: hide layout chrome
+   ============================================================ */
+@media print {
+    .main-header,
+    .site-footer,
+    .breadcrumbs,
+    .page-header,
+    .skip-link,
+    .cta-section {
+        display: none !important;
+    }
+
+    .main-content {
+        min-height: auto;
+    }
+}

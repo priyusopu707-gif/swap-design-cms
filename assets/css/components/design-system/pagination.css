@@ -1,0 +1,47 @@
+/* ============================================================
+   Swap Design — Pagination (Phase 3)
+   ============================================================ */
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ds-space-8);
+    margin-top: var(--ds-space-48);
+}
+.pagination__item {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ds-radius-8);
+    color: var(--ds-text-muted);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    border: 1px solid var(--ds-glass-border);
+    background: var(--ds-glass-bg);
+    cursor: pointer;
+    transition: all var(--dur-fast) var(--ease-out);
+    text-decoration: none;
+}
+.pagination__item:hover {
+    border-color: var(--ds-glass-border-hover);
+    color: var(--ds-text-heading);
+    background: var(--ds-glass-bg-hover);
+}
+.pagination__item.is-active {
+    background: var(--ds-primary);
+    border-color: var(--ds-primary);
+    color: #fff;
+}
+.pagination__item.is-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+.pagination__prev,
+.pagination__next {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-space-4);
+}

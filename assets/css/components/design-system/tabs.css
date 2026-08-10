@@ -1,0 +1,82 @@
+/* ============================================================
+   Swap Design — Tab Navigation (Phase 3)
+   Glass tab bar with sliding indicator + keyboard accessibility.
+   Matches /assets/js/components/tabs.js expectations.
+   ============================================================ */
+
+.tabs { display: flex; flex-direction: column; gap: var(--ds-space-32); }
+
+.tabs__list {
+    display: flex;
+    gap: var(--ds-space-4);
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--ds-glass-border);
+    padding-bottom: 0;
+}
+
+.tabs__list--pills {
+    border: none;
+    background: var(--ds-dark-surface);
+    padding: var(--ds-space-4);
+    border-radius: var(--ds-radius-full);
+    width: fit-content;
+}
+.tabs__list--pills .tabs__btn {
+    background: transparent;
+    border-radius: var(--ds-radius-full);
+    border: none;
+}
+.tabs__list--pills .tabs__btn.is-active {
+    background: var(--ds-primary);
+    color: #fff;
+}
+.tabs__list--underline {
+    border-bottom: 2px solid var(--ds-glass-border);
+}
+
+.tabs__btn {
+    padding: var(--ds-space-10) var(--ds-space-20);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--ds-text-muted);
+    border-bottom: 2px solid transparent;
+    background: none;
+    cursor: pointer;
+    transition:
+        color var(--dur-fast) var(--ease-out),
+        background var(--dur-fast) var(--ease-out),
+        border-color var(--dur-fast) var(--ease-out);
+    white-space: nowrap;
+    font-family: inherit;
+}
+.tabs__btn:hover {
+    color: var(--ds-text-heading);
+}
+.tabs__btn.is-active {
+    color: var(--ds-primary);
+    border-bottom-color: var(--ds-primary);
+}
+.tabs__btn:focus-visible {
+    outline: 2px solid var(--ds-primary);
+    outline-offset: 2px;
+    border-radius: var(--ds-radius-4);
+}
+
+.tabs__panel {
+    display: none;
+    animation: tabs-panel-in var(--dur-base) var(--ease-out);
+}
+.tabs__panel.is-active {
+    display: block;
+}
+@keyframes tabs-panel-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .tabs__panel { animation: tabs-panel-in var(--dur-base) var(--ease-out); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .tabs__panel { animation: none; display: block; }
+}
